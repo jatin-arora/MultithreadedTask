@@ -15,7 +15,7 @@ public class Client {
     public static void main(String[] args) {
         ITask task = init();
         try {
-            Thread.currentThread().sleep(1000);
+            Thread.currentThread().sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

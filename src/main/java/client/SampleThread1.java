@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SampleThread1 implements ISubTask {
     private AtomicInteger i = new AtomicInteger(0);
     public void run() {
+        System.out.println("THREAD :"+Thread.currentThread().getName());
+        i.set(0);
         while(!Thread.currentThread().isInterrupted() && i.get() < 10){
             System.out.println(" counter for thread "+Thread.currentThread().getName()+" is "+i.getAndIncrement());
             System.out.println(Thread.currentThread().getName()+" Thread.currentThread().isInterrupted(): "+Thread.currentThread().isInterrupted());

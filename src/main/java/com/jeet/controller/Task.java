@@ -9,6 +9,7 @@ import com.jeet.controller.organizers.SerialTaskOrganizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadFactory;
 
 /**
@@ -53,7 +54,7 @@ public final class Task implements ITask {
 
     public void run() {
         state = TaskState.RUNNING;
-        List<Thread> subTaskThreads = new ArrayList<Thread>();
+        List<Thread> subTaskThreads = new CopyOnWriteArrayList<Thread>();
         for( ISubTask subTask : subTasks){
             Thread subTaskThread = tf.newThread(subTask);
             subTaskThreads.add(subTaskThread);
@@ -64,6 +65,7 @@ public final class Task implements ITask {
 
     class TaskOrganizerListenerImpl implements TaskOrganizerListener{
         public void notifyCompleted() {
+            System.out.println("####################");
             System.out.println("TASK -------------------->>  COMPLETED");
         }
 
