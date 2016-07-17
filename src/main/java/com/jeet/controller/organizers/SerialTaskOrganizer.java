@@ -35,6 +35,12 @@ public class SerialTaskOrganizer implements ITaskOrganizer{
                 Thread th = threads.get(i);
                 th.start();
                 while( th.isAlive() ){
+                    System.out.println("222222222");
+                    try {
+                        Thread.currentThread().sleep(10, 10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     continue;
                 }
                 i++;
